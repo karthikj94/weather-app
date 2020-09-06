@@ -1,0 +1,23 @@
+.showWeather {
+    padding: 20px;
+    background-color: limegreen;
+    color: white;
+    margin: 20px 32%;
+    border-radius: 50px;
+    text-transform: capitalize;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.showError {
+    padding: 20px;
+    background-color: red;
+    color: white;
+    margin: 20px 32%;
+    border-radius: 50px;
+    text-transform: capitalize;
+    opacity: 0.8;
+    font-size: 16px;
+    font-weight: 600;
+}
