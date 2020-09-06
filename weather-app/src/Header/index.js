@@ -1,5 +1,4 @@
 import React from 'react';
-import constants from '../resources' 
 import './style.css';
 
 const Header = (props) => {

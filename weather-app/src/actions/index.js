@@ -1,6 +1,6 @@
 import axios from 'axios'
 import constant from '../resources'
-import { UPDATE_WEATHER, SET_ERROR_MESSAGE } from '../constants'
+import { UPDATE_WEATHER, SET_ERROR_MESSAGE, RESET_WEATHER } from '../constants'
 import { get as _get } from 'lodash';
 
 export function fetchWeather(city) {
@@ -19,6 +19,10 @@ export function fetchWeather(city) {
   }
 }
 
+export const resetWeatherInformation = () => (dispatch) => {
+  dispatch(resetWeather())
+}
+
 function updateWeatherData(payload) {
   return {
     type: UPDATE_WEATHER,
@@ -33,3 +37,8 @@ function setErrorMessage(payload) {
   }
 }
 
+function resetWeather() {
+  return {
+    type: RESET_WEATHER
+  }
+}

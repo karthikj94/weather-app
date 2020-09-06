@@ -1,4 +1,4 @@
-import { UPDATE_WEATHER, SET_ERROR_MESSAGE } from '../constants'
+import { UPDATE_WEATHER, SET_ERROR_MESSAGE, RESET_WEATHER } from '../constants'
 
 export default function reducer(state = {
     weather: '',
@@ -16,6 +16,12 @@ export default function reducer(state = {
         errorMsg: action.payload,
         weather: ''
       });
+
+    case RESET_WEATHER:
+      return Object.assign({}, state, {
+        weather: '',
+        errorMsg: ''
+      })
     
     default:
       return state;
