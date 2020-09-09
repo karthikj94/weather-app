@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   handleCity = (e) => {
-    let regexp = /^[a-zA-Z]+$/
+    let regexp = /^[a-zA-Z ]+$/
     let cityName = e.target.value;
     if (cityName === '' || regexp.test(cityName)) {
       this.setState({
@@ -36,13 +36,31 @@ class App extends React.Component {
   }
 
   render() {
-    const showAlert = this.props.weather || this.props.errorMsg
+    let weatherInfo = {}
+    if(this.props.weather) {
+      weatherInfo.across = this.props.weather
+    }
+    if(this.props.temperature) {
+      weatherInfo.temperature = this.props.temperature
+    }
+    if(this.props.humidity) {
+      weatherInfo.humidity = this.props.humidity
+    }
+    if(this.props.wind) {
+      weatherInfo.wind = this.props.wind
+    }
+    const showAlert = (weatherInfo && Object.keys(weatherInfo) && Object.keys(weatherInfo).length > 0) || this.props.errorMsg
+    console.log('weatherInfo', weatherInfo)
     return (
       <div className="App">
         <Header name={constants.HEADER} />
         <TextBox city={this.state.city} handleCity={this.handleCity} />
         <Button getWeather={this.getWeather} />
-        {showAlert ? <Alert weather={this.props.weather} errorMsg={this.props.errorMsg} /> : null }
+        {showAlert ? 
+          <Alert 
+            weather={weatherInfo}
+            errorMsg={this.props.errorMsg} 
+          /> : null }
         <Footer name={constants.FOOTER} />
       </div>
     );
@@ -52,6 +70,9 @@ class App extends React.Component {
 const mapStateToprops = (state) => {
   return {
     weather: state.weather,
+    temperature: state.temperature,
+    humidity: state.humidity,
+    wind: state.wind,
     errorMsg: state.errorMsg
   }
 }

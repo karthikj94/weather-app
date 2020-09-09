@@ -10,6 +10,10 @@
     font-weight: 600;
 }
 
+.weatherHeader {
+    font-size: 22px !important;
+}
+
 .showError {
     padding: 20px;
     background-color: red;
